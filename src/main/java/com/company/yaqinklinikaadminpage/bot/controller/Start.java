@@ -607,12 +607,12 @@ public class Start extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "t.me/yaqinklinika_bot";
+        return "";
     }
 
     @Override
     public String getBotToken() {
-        return "5272167366:AAFx72jMFBWEC1NicXwbJybenh6K7qbduU4";
+        return "";
     }
 
     public void sendmes(SendMessage sendMessage) {
