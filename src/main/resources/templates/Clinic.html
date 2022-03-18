@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Region</title>
+    <link th:href="@{/style/page.css}" rel="stylesheet"/>
+    <link th:href="@{/style/registr.css}" rel="stylesheet"/>
+   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="side_menu">
+    <div class="left_menu">
+
+        <div class="heading">
+            <p>Yaqin Klinika</p>
+        </div>
+
+        <ul>
+            <li><a th:href="@{/hospital/clinic}">Create clinc</a></li>
+            <li><a th:href="@{/analiz/acreate}">Create Analiz</a></li>
+            <li><a th:href="@{/diagnost/dcreate}">Create Diagnost</a></li>
+            <li><a th:href="@{/circle/ccreate}">Create 24/7</a></li>
+            <li><a th:href="@{/advice/adviceCreate}">Create Advice</a></li>
+            <li><a th:href="@{/intensive/icreate}">Create Intensive</a></li>
+        </ul>
+    </div>
+
+
+    <div class="right_menu">
+        <div class="header">
+            <div class="left_header">
+                <div class="left_data">
+                    <div class="menu">
+                        <ul>
+                            <li><a class="p-3 mb-2 bg-danger text-white" th:each="clinic : ${users}">Foydalanuvchilar : [[${clinic+1254}]]</a></li>
+                            <li><a th:href="@{/allclinic/get}">Klinikalar</a></li>
+                            <li><a th:href="@{/allservice/get}">Xizmatlar</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+
+            <div class="container" id="region">
+                <div  class="message" th:if="${#messages}">
+                    [[${message}]]
+                </div>
+
+                <div class="title">Klinikani kiriting</div>
+                <form th:action="@{/hospital/clinic/save}" method="post" th:object="${clinc}">
+                    <div class="user-details">
+
+                        <div class="input-box">
+                            <label class="details ">Nomi</label>
+                            <input type="text" th:field="*{c_name}" required minlength="2"/>
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details ">Manzil</label>
+                            <input type="text" th:field="*{c_address}" required minlength="2"/>
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details ">Telefon raqami </label>
+                            <input type="tel" th:field="*{c_phone}" required minlength="2"/>
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details">Arentir</label>
+                            <input type="text" th:field="*{c_arentr}" required minlength="2" />
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details">Ixtisosligi </label>
+                            <input type="text" th:field="*{c_type}" required minlength="2" />
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details">Karta manzili</label>
+                            <input type="text" th:field="*{c_karta}" required minlength="2" />
+
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details">Ishlash vaqti</label>
+                            <input type="text" th:field="*{c_time}" required minlength="2" maxlength="15"/>
+
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details">Klinika reytingi</label>
+                            <input type="number" th:field="*{c_reyting}" required minlength="2" maxlength="5"/>
+                        </div>
+
+                        <div class="input-box">
+                            <label class="details">Klinika joylashgan tuman ID</label>
+                            <input type="text" th:field="*{c_d_id}" required minlength="1" maxlength="3"/>
+                        </div>
+
+
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" value="Registr">
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="contentinfo">
+                <p>Tumanlar</p>
+                <div class="info">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nomi</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="region : ${regions}">
+                         <tr>
+                             <td>[[${region.d_id}]]</td>
+                             <td>[[${region.d_name}]]</td>
+                         </tr>
+                        </th:block>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
