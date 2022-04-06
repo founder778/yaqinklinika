@@ -2,11 +2,15 @@ package com.company.yaqinklinikaadminpage.bot.controller;
 
 
 import com.company.yaqinklinikaadminpage.bot.service.AdviceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-
+@Service
 public class AdviceController {
+    @Autowired
+    AdviceService adviceService;
     public static EditMessageText retunAdviceStep(String userid, Integer chat_id, String data,String userState){
         EditMessageText editMessageText = new EditMessageText();
         editMessageText.setReplyMarkup(AdviceController.retunCircleStepInStep(userState));
@@ -35,8 +39,8 @@ public class AdviceController {
         return ClinicController.retunClincRu(data, chat_id, userid);
     }
 
-    public static InlineKeyboardMarkup retunCircleStepInStep(String data) {
-        return AdviceService.retunAdviceBytype(data);
+    public  InlineKeyboardMarkup retunCircleStepInStep(String data) {
+        return adviceService.retunAdviceBytype(data);
     }
 
 }
