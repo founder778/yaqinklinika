@@ -607,12 +607,12 @@ public class Start extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "";
+        return "chinorexpress_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "";
+        return "5043212360:AAFCJKLqcQkPfvFRqOtq3r32ei_tvWmRUfc";
     }
 
     public void sendmes(SendMessage sendMessage) {
